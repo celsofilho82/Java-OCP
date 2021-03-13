@@ -9,6 +9,7 @@ public class Product {
 	private int id;
 	private String name;
 	private BigDecimal price;
+	private Rating rating;
 
 	public int getId() {
 		return id;
@@ -28,6 +29,10 @@ public class Product {
 
 	public BigDecimal getPrice() {
 		return price;
+	}
+
+	public Rating getRating() {
+		return rating;
 	}
 
 	public void setPrice(final BigDecimal price) {
