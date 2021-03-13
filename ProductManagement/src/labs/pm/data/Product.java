@@ -1,5 +1,7 @@
 package labs.pm.data;
 
+import static labs.pm.data.Rating.NOT_RATED;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -11,20 +13,30 @@ public class Product {
 	private BigDecimal price;
 	private Rating rating;
 
+	public Product() {
+		this(0, "no name", BigDecimal.ZERO);
+	}
+
+	public Product(int id, String name, BigDecimal price, Rating rating) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.rating = rating;
+	}
+
+	public Product(int id, String name, BigDecimal price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.rating = NOT_RATED;
+	}
+
 	public int getId() {
 		return id;
 	}
 
-	public void setId(final int id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
 	}
 
 	public BigDecimal getPrice() {
@@ -33,10 +45,6 @@ public class Product {
 
 	public Rating getRating() {
 		return rating;
-	}
-
-	public void setPrice(final BigDecimal price) {
-		this.price = price;
 	}
 
 	public BigDecimal getDiscount() {
