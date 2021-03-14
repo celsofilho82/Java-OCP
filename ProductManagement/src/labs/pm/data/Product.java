@@ -4,8 +4,9 @@ import static labs.pm.data.Rating.NOT_RATED;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 
-public class Product {
+public abstract class Product {
 
 	private static final BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.1);
 	private int id;
@@ -51,13 +52,16 @@ public class Product {
 		return price.multiply(DISCOUNT_RATE).setScale(2, RoundingMode.HALF_UP);
 	}
 
-	public Product applyRating(Rating newRating) {
-		return new Product(id, name, price, newRating);
+	public abstract Product applyRating(Rating newRating);
+
+	public LocalDate getBestBefore() {
+		return LocalDate.now();
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", rating=" + rating + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", rating=" + rating + ", getBestBefore()="
+				+ getBestBefore() + "]";
 	}
 
 	@Override

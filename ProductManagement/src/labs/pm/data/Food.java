@@ -17,13 +17,13 @@ public class Food extends Product {
 	}
 
 	@Override
-	public String toString() {
-		return super.toString() + "[bestBefore=" + bestBefore + "]";
+	public BigDecimal getDiscount() {
+		return (bestBefore.isEqual(LocalDate.now())) ? super.getDiscount() : BigDecimal.ZERO;
 	}
 
 	@Override
-	public BigDecimal getDiscount() {
-		return (bestBefore.isEqual(LocalDate.now())) ? super.getDiscount() : BigDecimal.ZERO;
+	public Product applyRating(Rating newRating) {
+		return new Food(getId(), getName(), getPrice(), newRating, bestBefore);
 	}
 
 }
