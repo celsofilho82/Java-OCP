@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 
-public abstract class Product {
+public abstract class Product implements Rateable<Product> {
 
 	private static final BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.1);
 	private int id;
@@ -44,6 +44,7 @@ public abstract class Product {
 		return price;
 	}
 
+	@Override
 	public Rating getRating() {
 		return rating;
 	}
