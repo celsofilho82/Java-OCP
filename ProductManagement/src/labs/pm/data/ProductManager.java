@@ -53,7 +53,7 @@ public class ProductManager {
 			txt.append(MessageFormat.format(resources.getString("review"), review.getRating().getStars(),
 					review.getComments()));
 		} else {
-			txt.append(resources.getStringArray("no.reviews"));
+			txt.append(resources.getString("no.reviews"));
 		}
 		txt.append('\n');
 		System.out.println(txt);
