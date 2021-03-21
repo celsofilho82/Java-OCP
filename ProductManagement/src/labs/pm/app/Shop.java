@@ -12,12 +12,12 @@ public class Shop {
 
 	public static void main(String[] args) {
 		ProductManager manager = new ProductManager(new Locale("pt", "BR"));
-		Product p1 = manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-		manager.printProductReport(p1);
-		p1 = manager.reviewProduct(p1, Rating.FOUR_STAR, "Nice hot cup of tea");
-		p1 = manager.reviewProduct(p1, Rating.TWO_STAR, "Nice hot cup of tea");
-		p1 = manager.reviewProduct(p1, Rating.THREE_STAR, "Nice hot cup of tea");	
-		manager.printProductReport(p1);
+		manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+		manager.printProductReport(101);
+		manager.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
+		manager.reviewProduct(101, Rating.TWO_STAR, "Nice hot cup of tea");
+		manager.reviewProduct(101, Rating.THREE_STAR, "Nice hot cup of tea");
+		manager.printProductReport(101);
 
 		Product p2 = manager.createProduct(102, "Coffee", BigDecimal.valueOf(2.99), Rating.NOT_RATED);
 		p2 = manager.reviewProduct(p2, Rating.THREE_STAR, "Coffee was ok");
@@ -32,12 +32,12 @@ public class Shop {
 		p21 = manager.reviewProduct(p21, Rating.FIVE_STAR, "Cake was ok");
 		manager.printProductReport(p21);
 
-		Product p211 = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.50), Rating.NOT_RATED,
+		manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.50), Rating.NOT_RATED,
 				LocalDate.now().plusDays(3));
-		p211 = manager.reviewProduct(p211, Rating.THREE_STAR, "Chocolate was ok");
-		p211 = manager.reviewProduct(p211, Rating.ONE_STAR, "Chocolate was ok");
-		p211 = manager.reviewProduct(p211, Rating.FIVE_STAR, "Chocolate was ok");
-		manager.printProductReport(p211);
+		manager.reviewProduct(104, Rating.THREE_STAR, "Chocolate was ok");
+		manager.reviewProduct(104, Rating.ONE_STAR, "Chocolate was ok");
+		manager.reviewProduct(104, Rating.FIVE_STAR, "Chocolate was ok");
+		manager.printProductReport(104);
 	}
 
 }

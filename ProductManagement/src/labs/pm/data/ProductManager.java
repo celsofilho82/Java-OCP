@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -55,6 +56,27 @@ public class ProductManager {
 		return product;
 	}
 
+	public Product findProduct(int id) {
+		Product result = null;
+		for (Product product : products.keySet()) {
+			if (product.getId() == id) {
+				result = product;
+				break;
+			}
+		}
+		return result;
+	}
+
+	public void printProductReport(int id) {
+		printProductReport(findProduct(id));
+	}
+
+	public Product reviewProduct(int id, Rating rating, String comments) {
+		Product product = reviewProduct(findProduct(id), rating, comments);
+
+		return product;
+	}
+
 	public void printProductReport(Product product) {
 		List<Review> reviews = products.get(product);
 		StringBuilder txt = new StringBuilder();
@@ -63,15 +85,19 @@ public class ProductManager {
 				dateFormat.format(product.getBestBefore())));
 		txt.append('\n');
 
+		Collections.sort(reviews);
+
 		for (Review review : reviews) {
 			txt.append(MessageFormat.format(resources.getString("review"), review.getRating().getStars(),
 					review.getComments()));
 			txt.append('\n');
 		}
+
 		if (reviews.isEmpty()) {
 			txt.append(resources.getString("no.reviews"));
 			txt.append('\n');
 		}
+
 		System.out.println(txt);
 	}
 }
